@@ -25,6 +25,7 @@ import { z } from "zod";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { PopoverClose } from "@radix-ui/react-popover";
 import { editTask, Task } from "@/features/TaskSlice";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   title: z
@@ -121,10 +122,11 @@ const EditTask = ({ task }: { task: Task }) => {
                     </FormItem>
                   )}
                 />
-                <div className="flex justify-between">
+                <div className="grid grid-flow-col gap-2">
                   <Button
                     type="submit"
                     className="bg-blue-600 hover:bg-blue-900"
+                    onClick={()=>toast('Task edit successfully')}
                   >
                     Save
                   </Button>

@@ -13,6 +13,7 @@ import {
 } from "./ui/table";
 import EditTask from "./EditTask";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 const TaskList = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
@@ -24,7 +25,7 @@ const TaskList = () => {
     dispatch(fetchTodo());
   }, [dispatch]);
 
-  const handleDelete = (id:number) => {
+  const handleDelete = (id: number) => {
     dispatch(deleteTask(id));
   };
   if (loading) {
@@ -56,11 +57,14 @@ const TaskList = () => {
                 {task.description || "No description provided"}
               </TableCell>
               <TableCell>{task.status}</TableCell>
-              <TableCell className="flex justify-between">
+              <TableCell className="grid grid-flow-col gap-2">
                 <EditTask task={task} />
                 <Button
                   className="px-3 py-1 bg-blue-600 hover:bg-red-600 rounded-md"
-                  onClick={() => handleDelete(task.id)}
+                  onClick={() => {
+                    handleDelete(task.id);
+                    toast("Task delete Successfully");
+                  }}
                 >
                   Delete
                 </Button>

@@ -31,6 +31,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   title: z
@@ -141,6 +142,7 @@ const AddTask = () => {
                     <Button
                       type="submit"
                       className="w-full bg-blue-600 hover:bg-blue-900"
+                      onClick={()=>toast('Task added successfully')}
                     >
                       Add Task
                     </Button>
