@@ -50,6 +50,7 @@ const EditTask = ({ task }: { task: Task }) => {
   });
   function onEdit(values: z.infer<typeof formSchema>) {
     dispatch(editTask({ id: task.id, ...values }));
+    toast.success("Task edit successfully");
     console.log(values);
   }
   return (
@@ -126,7 +127,6 @@ const EditTask = ({ task }: { task: Task }) => {
                   <Button
                     type="submit"
                     className="bg-blue-600 hover:bg-blue-900"
-                    onClick={()=>toast('Task edit successfully')}
                   >
                     Save
                   </Button>

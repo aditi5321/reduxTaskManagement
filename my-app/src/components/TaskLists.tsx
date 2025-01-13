@@ -27,6 +27,7 @@ const TaskList = () => {
 
   const handleDelete = (id: number) => {
     dispatch(deleteTask(id));
+    toast.success("Task delete Successfully")
   };
   if (loading) {
     return <p>Task is loading....</p>;
@@ -61,10 +62,7 @@ const TaskList = () => {
                 <EditTask task={task} />
                 <Button
                   className="px-3 py-1 bg-blue-600 hover:bg-red-600 rounded-md"
-                  onClick={() => {
-                    handleDelete(task.id);
-                    toast("Task delete Successfully");
-                  }}
+                  onClick={() =>handleDelete(task.id)}
                 >
                   Delete
                 </Button>
